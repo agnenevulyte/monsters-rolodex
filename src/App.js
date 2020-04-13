@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import CardList from './components/card-list/CardList';
 
 export default class App extends Component {
   constructor() {
@@ -30,9 +31,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.monsters.map((eachMonster) => (
-          <h1 key={eachMonster.id}>{eachMonster.name}</h1>
-        ))}
+        <CardList monsters={this.state.monsters}></CardList>
         <p>{this.state.string}</p>
         <button onClick={this.handleClick}>Change name</button>
       </div>
