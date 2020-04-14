@@ -8,6 +8,7 @@ export default class App extends Component {
     this.state = {
       monsters: [],
       string: 'Hello Anonymous....',
+      searchField: '',
     };
   }
   componentDidMount() {
@@ -22,6 +23,16 @@ export default class App extends Component {
       });
   };
 
+  handleChange = (e) => {
+    e.preventDefault();
+    this.setState(
+      {
+        searchField: e.target.value,
+      },
+      () => console.log(this.state)
+    );
+  };
+
   handleClick = (e) => {
     e.preventDefault();
     this.setState({
@@ -31,6 +42,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+        <input
+          type="search"
+          placeholder="search monsters"
+          onChange={this.handleChange}
+        />
         <CardList monsters={this.state.monsters}></CardList>
         <p>{this.state.string}</p>
         <button onClick={this.handleClick}>Change name</button>
