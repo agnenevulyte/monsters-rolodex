@@ -7,7 +7,7 @@ export default class App extends Component {
     super();
     this.state = {
       monsters: [],
-      string: 'Hello Anonymous....',
+      myString: 'Hello Anonymous....',
       searchField: '',
     };
   }
@@ -39,7 +39,14 @@ export default class App extends Component {
       string: 'Hello Leo!',
     });
   };
+
   render() {
+    const {monsters, searchField, myString} = this.state;
+    // filters monsters in search box
+    const filteredMonsters = monsters.filter((monster) =>
+      monster.name.toLowerCase().includes(searchField.toLowerCase())
+    );
+
     return (
       <div className="App">
         <input
@@ -47,8 +54,8 @@ export default class App extends Component {
           placeholder="search monsters"
           onChange={this.handleChange}
         />
-        <CardList monsters={this.state.monsters}></CardList>
-        <p>{this.state.string}</p>
+        <CardList monsters={filteredMonsters}></CardList>
+        <p>{myString}</p>
         <button onClick={this.handleClick}>Change name</button>
       </div>
     );
