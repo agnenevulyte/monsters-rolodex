@@ -2,7 +2,7 @@ import React from 'react';
 import './card.css';
 
 export default function Card({monster}) {
-  console.log(monster);
+  // console.log(monstaser);
   return (
     <div className="card">
       <img alt="monter" src={`https://robohash.org/${monster.id}set=set2`} />
